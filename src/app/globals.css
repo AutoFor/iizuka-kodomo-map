@@ -153,8 +153,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (min-width: 768px) {
   .topbar__title { font-size: 20px; }
   .panel {
-    top: 16px; bottom: 16px; left: 16px; right: auto; width: 400px; max-height: none;
-    border-radius: 22px;
+    top: 16px; bottom: auto; left: 16px; right: auto; width: 400px;
+    max-height: calc(100% - 32px); border-radius: 22px;
   }
   .panel__grab { display: none; }
   .list { left: 16px; top: 16px; bottom: 16px; right: auto; width: 400px; border-radius: 22px; box-shadow: var(--shadow); padding: 12px; }
