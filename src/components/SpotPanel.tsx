@@ -1,6 +1,7 @@
 "use client";
 
 import InstagramEmbed from "@/components/InstagramEmbed";
+import PhotoGallery from "@/components/PhotoGallery";
 import { CATEGORIES, type Spot } from "@/lib/types";
 
 type Props = { spot: Spot; onClose: () => void };
@@ -45,6 +46,8 @@ export default function SpotPanel({ spot, onClose }: Props) {
             ))}
           </div>
         )}
+
+        {spot.photos && spot.photos.length > 0 && <PhotoGallery photos={spot.photos} title={spot.name} />}
 
         {spot.instagram_url && (
           <section className="insta">

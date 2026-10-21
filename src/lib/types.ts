@@ -31,5 +31,7 @@ export type Spot = {
   free: boolean;
   url?: string | null;
   instagram_url?: string | null;
+  /** 店内・料理の写真（public 配下のパス）。紹介動画から切り出したもの */
+  photos?: string[] | null;
   tags: string[];
 };

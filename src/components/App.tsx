@@ -33,7 +33,7 @@ export default function App({ spots }: Props) {
         <div className="topbar__brand">
           <span className="topbar__logo" aria-hidden>🏘️</span>
           <div>
-            <h1 className="topbar__title">いいづか こどもマップ</h1>
+            <h1 className="topbar__title">いいづか こどもマップ（仮）</h1>
             <p className="topbar__sub">地域で子どもを支えるお店・居場所</p>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function App({ spots }: Props) {
       </main>
 
       <footer className="foot">
-        ※ 現在はダミーデータで表示中{" ・ "}
+        ※ 試作版です。営業日・内容は各お店にご確認ください{" ・ "}
         <a href="https://autofor.co.jp/" target="_blank" rel="noopener noreferrer">AutoFor株式会社</a>
       </footer>
     </div>
