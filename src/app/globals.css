@@ -169,6 +169,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .btn--primary { background: var(--green); border-color: var(--green); color: #fff; }
 .btn--insta { width: 100%; border-color: #e1306c; color: #e1306c; }
 
+/* ---- 位置調整モード（?edit） ---- */
+.editbar {
+  position: absolute; z-index: 1000; left: 8px; right: 8px; bottom: 8px;
+  background: #fff; border-radius: 16px; box-shadow: var(--shadow); padding: 12px 14px;
+}
+.editbar__title { margin: 0 0 6px; font-size: 13px; font-weight: 900; }
+.editbar__coords { margin: 0 0 10px; font-size: 12px; white-space: pre-wrap; color: var(--muted); }
+.editbar__copy { width: 100%; }
+
 /* ---- desktop ---- */
 @media (min-width: 768px) {
   .topbar__title { font-size: 20px; }

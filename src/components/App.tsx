@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
+import EditBar from "@/components/EditBar";
 import SpotPanel from "@/components/SpotPanel";
 import { CATEGORIES, type Category, type Spot } from "@/lib/types";
 
@@ -17,6 +18,13 @@ export default function App({ spots }: Props) {
   const [freeOnly, setFreeOnly] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [listOpen, setListOpen] = useState(false);
+  // URL に ?edit を付けると位置調整モード（ピンをドラッグできる）
+  const editMode = useSyncExternalStore(
+    () => () => {},
+    () => new URLSearchParams(window.location.search).has("edit"),
+    () => false,
+  );
+  const [moved, setMoved] = useState<Record<string, [number, number]>>({});
 
   const visible = useMemo(
     () =>
@@ -74,7 +82,13 @@ export default function App({ spots }: Props) {
 
       <main className="stage">
         <div className="map">
-          <MapView spots={visible} selectedId={selectedId} onSelect={setSelectedId} />
+          <MapView
+            spots={visible}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
+            editable={editMode}
+            onMove={(id, lat, lng) => setMoved((m) => ({ ...m, [id]: [lat, lng] }))}
+          />
         </div>
 
         {listOpen && (
@@ -106,7 +120,8 @@ export default function App({ spots }: Props) {
           </ul>
         )}
 
-        {selected && <SpotPanel spot={selected} onClose={() => setSelectedId(null)} />}
+        {selected && !editMode && <SpotPanel spot={selected} onClose={() => setSelectedId(null)} />}
+        {editMode && <EditBar spots={spots} moved={moved} />}
       </main>
 
       <footer className="foot">

@@ -12,15 +12,20 @@ type Props = {
   spots: Spot[];
   selectedId: string | null;
   onSelect: (id: string | null) => void;
+  /** 位置調整モード。ピンをドラッグで動かせる */
+  editable?: boolean;
+  onMove?: (id: string, lat: number, lng: number) => void;
 };
 
-export default function MapView({ spots, selectedId, onSelect }: Props) {
+export default function MapView({ spots, selectedId, onSelect, editable = false, onMove }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const layerRef = useRef<LayerGroup | null>(null);
   const markersRef = useRef<Map<string, Marker>>(new Map());
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
+  const onMoveRef = useRef(onMove);
+  onMoveRef.current = onMove;
 
   // 地図の初期化（1 回だけ）
   useEffect(() => {
@@ -75,19 +80,24 @@ export default function MapView({ spots, selectedId, onSelect }: Props) {
         iconAnchor: [20, 46],
         popupAnchor: [0, -40],
       });
-      const m = L.marker([s.lat, s.lng], { icon, title: s.name, riseOnHover: true })
+      const m = L.marker([s.lat, s.lng], { icon, title: s.name, riseOnHover: true, draggable: editable })
         .addTo(layer)
-        .on("click", () => onSelectRef.current(s.id));
+        .on("click", () => onSelectRef.current(s.id))
+        .on("dragend", () => {
+          const p = m.getLatLng();
+          onMoveRef.current?.(s.id, p.lat, p.lng);
+        });
       m.bindTooltip(s.name, { direction: "top", offset: [0, -44], className: "pin-tip" });
       markersRef.current.set(s.id, m);
     }
   }
 
-  // spots が変わったらマーカーを描き直す
+  // spots・編集モードが変わったらマーカーを描き直す
   useEffect(() => {
     if (!mapRef.current) return;
     import("leaflet").then((mod) => renderMarkers(mod.default, spots));
-  }, [spots]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [spots, editable]);
 
   // 選択状態の反映
   useEffect(() => {
