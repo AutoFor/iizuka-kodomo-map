@@ -1,6 +1,6 @@
 # iizuka-kodomo-map
 
-飯塚市の「地域で子どもを支える」スポットを地図で探すアプリ。Next.js 16 + Leaflet、Cloudflare Pages ホスティング（静的書き出し）。
+飯塚市の「地域で子どもを支える」スポットを地図で探すアプリ。Next.js 16 + Leaflet、Cloudflare Workers ホスティング（静的アセット配信、設定は wrangler.jsonc）。
 
 ## Issue 運用（このリポジトリは GitHub Issues）
 
@@ -19,5 +19,5 @@
 - 地図は `src/components/MapView.tsx`（leaflet を `useEffect` 内で動的 import。SSR しない）
 - Instagram 埋め込みは `src/components/InstagramEmbed.tsx`（公式 embed.js。高さ自動調整）
 - カテゴリの追加は `src/lib/types.ts` の `CATEGORIES` を更新
-- デプロイは Cloudflare Pages の GitHub 連携。main へ push すれば自動反映（ビルド `npm run build`、出力 `out`）
+- デプロイは Cloudflare の GitHub 連携。main へ push すると `npx wrangler deploy` が走り、wrangler.jsonc の build.command で `npm run build` → `out/` を配信
 - `output: "export"` のため、サーバー機能（API ルート、SSR、Server Actions、`connection()`）は使えない。ブラウザ側で完結させる

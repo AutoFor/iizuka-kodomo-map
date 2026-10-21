@@ -20,7 +20,7 @@
 | フレームワーク | Next.js 16 (App Router) / TypeScript / Tailwind v4 |
 | 地図 | Leaflet 1.9 + OpenStreetMap タイル |
 | データ | `src/data/spots.ts`（当面はデータベースなし） |
-| ホスティング | Cloudflare Pages（静的書き出し。main への push で自動デプロイ） |
+| ホスティング | Cloudflare Workers（静的アセット配信。main への push で自動デプロイ） |
 
 ## ローカルで動かす
 
@@ -31,13 +31,15 @@ npm run dev   # http://localhost:3000
 
 ## デプロイ
 
-Cloudflare Pages の GitHub 連携で、main ブランチへ push すると自動でビルド・公開されます。
+Cloudflare の GitHub 連携で、main ブランチへ push すると自動でビルド・公開されます。設定は `wrangler.jsonc` にあります。
 
 | 設定 | 値 |
 |------|----|
-| ビルドコマンド | `npm run build` |
-| 出力ディレクトリ | `out` |
+| Cloudflare 側のデプロイコマンド | `npx wrangler deploy` |
+| ビルド（wrangler.jsonc の build.command） | `npm run build` → `out/` を静的配信 |
 | Node.js | 24（`.node-version`） |
+
+手元から手動デプロイする場合は `npx wrangler login` のうえ `npm run deploy`。
 
 ## データの追加・修正
 

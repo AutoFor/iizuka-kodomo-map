@@ -1,0 +1,16 @@
+{
+  // Cloudflare Workers（静的アセット配信のみ）の設定
+  // Cloudflare の Git 連携が main への push で `npx wrangler deploy` を実行し、
+  // build.command で Next.js を静的書き出し → out/ を配信する
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "iizuka-kodomo-map",
+  "compatibility_date": "2026-10-01",
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
