@@ -31,7 +31,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "火・木 18:00〜21:00 / 土 13:00〜17:00",
     free: true,
     url: "https://example.com/manabi",
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: null,
     tags: ["中学生", "高校生"],
   },
   {
@@ -47,7 +47,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "10:00〜18:00（火曜休み）",
     free: false,
     url: null,
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: null,
     tags: ["小学生", "中学生"],
   },
   {
@@ -79,7 +79,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "第2・第4 日曜 10:00〜15:00",
     free: true,
     url: "https://example.com/playpark",
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: null,
     tags: ["未就学児", "小学生"],
   },
   {
@@ -95,7 +95,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "9:00〜17:00（月曜休み）",
     free: false,
     url: "https://example.com/koniwa",
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: "https://www.instagram.com/reel/DUMPeRLk8vI/",
     tags: ["乳幼児", "保護者"],
   },
   {
@@ -111,7 +111,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "火〜日 14:00〜20:00",
     free: true,
     url: "https://example.com/youth",
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: null,
     tags: ["中学生", "高校生"],
   },
   {
@@ -143,7 +143,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "第1・第3 土曜 11:30〜14:00",
     free: true,
     url: null,
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: null,
     tags: ["小学生", "保護者", "高齢者"],
   },
   {
@@ -159,7 +159,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "11:00〜15:00 / 17:00〜21:00",
     free: false,
     url: "https://example.com/isshin",
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: null,
     tags: ["小学生", "家族"],
   },
   {
@@ -191,7 +191,7 @@ export const DUMMY_SPOTS: Spot[] = [
     hours: "10:00〜21:00",
     free: true,
     url: "https://example.com/tsukuru",
-    instagram_url: "https://www.instagram.com/reel/DeJIwHAz2PI/",
+    instagram_url: null,
     tags: ["高校生"],
   },
 ];

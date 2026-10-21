@@ -43,6 +43,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   display: flex; gap: 8px; overflow-x: auto; padding: 10px 16px;
   background: var(--paper); border-bottom: 1px solid var(--line);
   scrollbar-width: none;
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
 }
 .filters::-webkit-scrollbar { display: none; }
 .fbtn {
@@ -134,7 +135,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .insta { margin-top: 6px; }
 .insta__frame {
   position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--line);
-  aspect-ratio: 9 / 14; max-height: 440px; background: #fafafa; margin-bottom: 10px;
+  aspect-ratio: 4 / 7; background: #fafafa; margin-bottom: 10px;
 }
 .insta__note { margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .insta__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
