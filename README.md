@@ -20,7 +20,7 @@
 | フレームワーク | Next.js 16 (App Router) / TypeScript / Tailwind v4 |
 | 地図 | Leaflet 1.9 + OpenStreetMap タイル |
 | データ | `src/data/spots.ts`（当面はデータベースなし） |
-| ホスティング | Vercel |
+| ホスティング | Cloudflare Pages（静的書き出し。main への push で自動デプロイ） |
 
 ## ローカルで動かす
 
@@ -28,6 +28,16 @@
 npm install
 npm run dev   # http://localhost:3000
 ```
+
+## デプロイ
+
+Cloudflare Pages の GitHub 連携で、main ブランチへ push すると自動でビルド・公開されます。
+
+| 設定 | 値 |
+|------|----|
+| ビルドコマンド | `npm run build` |
+| 出力ディレクトリ | `out` |
+| Node.js | 24（`.node-version`） |
 
 ## データの追加・修正
 
