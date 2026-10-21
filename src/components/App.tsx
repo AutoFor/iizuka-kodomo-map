@@ -10,9 +10,9 @@ const MapView = dynamic(() => import("@/components/MapView"), {
   loading: () => <div className="map-loading">地図を読み込み中…</div>,
 });
 
-type Props = { spots: Spot[]; source: "supabase" | "dummy" };
+type Props = { spots: Spot[] };
 
-export default function App({ spots, source }: Props) {
+export default function App({ spots }: Props) {
   const [filter, setFilter] = useState<Category | "all">("all");
   const [freeOnly, setFreeOnly] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -110,8 +110,7 @@ export default function App({ spots, source }: Props) {
       </main>
 
       <footer className="foot">
-        {source === "dummy" ? "※ ダミーデータで表示中（Supabase 未接続）" : "データ: Supabase"}
-        {" ・ "}
+        ※ 現在はダミーデータで表示中{" ・ "}
         <a href="https://autofor.co.jp/" target="_blank" rel="noopener noreferrer">AutoFor株式会社</a>
       </footer>
     </div>

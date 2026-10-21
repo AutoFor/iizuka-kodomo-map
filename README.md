@@ -19,7 +19,7 @@
 |------|------|
 | フレームワーク | Next.js 16 (App Router) / TypeScript / Tailwind v4 |
 | 地図 | Leaflet 1.9 + OpenStreetMap タイル |
-| データ | Supabase（`spots` テーブル）。未設定時は `src/data/spots.ts` のダミー |
+| データ | `src/data/spots.ts`（当面はデータベースなし） |
 | ホスティング | Vercel |
 
 ## ローカルで動かす
@@ -29,22 +29,11 @@ npm install
 npm run dev   # http://localhost:3000
 ```
 
-Supabase なしでもダミーデータで動きます。
+## データの追加・修正
 
-## Supabase に接続する
+`src/data/spots.ts` の `SPOTS` 配列にスポットを追加・修正し、main に push してください。
 
-1. Supabase でプロジェクトを作成
-2. SQL Editor で `supabase/schema.sql` を実行（テーブル・RLS・初期データが入る）
-3. `.env.local`（ローカル）/ Vercel の Environment Variables に以下を設定
-
-```
-NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-```
-
-スポットの追加・編集は Supabase ダッシュボードの Table Editor から行えます（`published = false` で非表示）。
-
-## データ構造（`spots`）
+## データ構造（`Spot`）
 
 | 列 | 説明 |
 |----|------|
@@ -59,7 +48,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 | url | 公式サイト |
 | instagram_url | Instagram のリール / 投稿 URL（埋め込み表示される） |
 | tags | 対象（小学生・高校生など） |
-| published | 公開フラグ |
 
 ## 制作
 

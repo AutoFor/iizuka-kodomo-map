@@ -1,7 +1,10 @@
 import type { Spot } from "@/lib/types";
 
-/** Supabase 未設定時に使うダミーデータ（飯塚市内の架空スポット） */
-export const DUMMY_SPOTS: Spot[] = [
+/**
+ * 掲載スポットのデータ。現在はダミー（飯塚市内の架空スポット）。
+ * 追加・修正はこのファイルを編集して main に push すると Vercel に反映される。
+ */
+export const SPOTS: Spot[] = [
   {
     id: "1",
     name: "いいづか こども食堂 ひだまり",
