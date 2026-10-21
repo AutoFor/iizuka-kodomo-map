@@ -1,18 +1,12 @@
 "use client";
 
+import InstagramEmbed from "@/components/InstagramEmbed";
 import { CATEGORIES, type Spot } from "@/lib/types";
 
 type Props = { spot: Spot; onClose: () => void };
 
-function instagramEmbedUrl(url: string) {
-  // https://www.instagram.com/reel/XXXX/ -> https://www.instagram.com/reel/XXXX/embed/
-  const m = url.match(/instagram\.com\/(reel|p)\/([A-Za-z0-9_-]+)/);
-  return m ? `https://www.instagram.com/${m[1]}/${m[2]}/embed/` : null;
-}
-
 export default function SpotPanel({ spot, onClose }: Props) {
   const c = CATEGORIES[spot.category];
-  const embed = spot.instagram_url ? instagramEmbedUrl(spot.instagram_url) : null;
 
   return (
     <aside className="panel" aria-label={`${spot.name} の詳細`}>
@@ -55,17 +49,7 @@ export default function SpotPanel({ spot, onClose }: Props) {
         {spot.instagram_url && (
           <section className="insta">
             <h3 className="panel__h3">紹介動画（Instagram）</h3>
-            {embed && (
-              <div className="insta__frame">
-                <iframe
-                  src={embed}
-                  title={`${spot.name} の Instagram 動画`}
-                  loading="lazy"
-                  allow="encrypted-media"
-                  allowFullScreen
-                />
-              </div>
-            )}
+            <InstagramEmbed url={spot.instagram_url} title={spot.name} />
             <p className="insta__note">動画が表示されない場合は、下のボタンから Instagram で開いてください。</p>
             <a className="btn btn--insta" href={spot.instagram_url} target="_blank" rel="noopener noreferrer">
               Instagram で見る ↗
