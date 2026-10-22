@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 /**
  * 紹介動画から切り出した写真の横スクロールギャラリー。
@@ -21,15 +22,19 @@ export default function PhotoGallery({ photos, title }: { photos: string[]; titl
         ))}
       </div>
 
-      {open !== null && (
-        <div className="lightbox" role="dialog" aria-label="写真の拡大表示" onClick={() => setOpen(null)}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={photos[open]} alt={`${title} の写真 ${open + 1}`} />
-          <span className="lightbox__count">
-            {open + 1} / {photos.length}
-          </span>
-        </div>
-      )}
+      {/* パネル（overflow-y: auto）の内側に fixed 要素を置くと iOS Safari で
+          ビューポート基準にならず見切れるため、body 直下に portal で描画する */}
+      {open !== null &&
+        createPortal(
+          <div className="lightbox" role="dialog" aria-label="写真の拡大表示" onClick={() => setOpen(null)}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={photos[open]} alt={`${title} の写真 ${open + 1}`} />
+            <span className="lightbox__count">
+              {open + 1} / {photos.length}
+            </span>
+          </div>,
+          document.body,
+        )}
     </section>
   );
 }

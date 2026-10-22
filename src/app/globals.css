@@ -155,8 +155,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .lightbox {
   position: fixed; inset: 0; z-index: 2000; background: rgba(0, 0, 0, .88);
   display: flex; align-items: center; justify-content: center; padding: 16px;
+  /* iOS のアドレスバー分を除いた「見えている高さ」に合わせる */
+  height: 100dvh;
 }
-.lightbox img { max-width: 100%; max-height: 100%; border-radius: 12px; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
 .lightbox__count { position: absolute; bottom: 16px; color: #fff; font-size: 13px; font-weight: 700; }
 
 .insta { margin-top: 6px; }
