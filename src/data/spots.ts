@@ -55,7 +55,7 @@ export const SPOTS: Spot[] = [
     free: false,
     url: "https://store.starbucks.co.jp/",
     instagram_url: null,
-    photos: [],
+    photos: ["/spots/starbucks-iizuka-taromaru/halloween-sign.jpg"],
     events: [
       {
         title: "Halloween kids party",
