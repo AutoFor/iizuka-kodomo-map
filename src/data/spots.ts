@@ -40,4 +40,31 @@ export const SPOTS: Spot[] = [
     photos: [],
     tags: ["乳幼児", "小学生", "保護者"],
   },
+  {
+    id: "starbucks-iizuka-taromaru",
+    name: "スターバックス アクロスプラザ飯塚太郎丸店",
+    category: "kids_ok",
+    // 位置は店頭写真の GPS 情報より
+    lat: 33.60895,
+    lng: 130.67108,
+    address: "飯塚市太郎丸791-1（アクロスプラザ飯塚太郎丸内）",
+    summary:
+      "2026年5月にオープンした、飯塚市初のドライブスルー併設スターバックス。キッズ向けのミルクやココアがあり、子ども向けのワークショップもときどき開催されます。",
+    services: ["キッズ ミルク・キッズ ココアあり", "子ども向けイベントを開催"],
+    hours: "8:00〜22:00 ※最新の営業時間は公式サイトで確認",
+    free: false,
+    url: "https://store.starbucks.co.jp/",
+    instagram_url: null,
+    photos: [],
+    events: [
+      {
+        title: "Halloween kids party",
+        date: "2026-10-31",
+        schedule: "10月31日（土）11:00〜（45分程度）",
+        description: "キッズエプロンをつけてハロウィンの工作をしよう！",
+        note: "定員4名程度（3〜4才位から小学生まで）。予約制です。詳しくは店頭のバリスタへお声がけください。",
+      },
+    ],
+    tags: ["乳幼児", "小学生", "保護者"],
+  },
 ];

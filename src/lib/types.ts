@@ -18,6 +18,17 @@ export const CATEGORIES: Record<
   koukousei: { label: "高校生応援", short: "高校生", color: "#1B9AAA", emoji: "🎒" },
 };
 
+export type SpotEvent = {
+  title: string;
+  /** 開催日（YYYY-MM-DD）。この日を過ぎると表示されない */
+  date: string;
+  /** 「10/31（土）11:00〜」のような表示用の日時 */
+  schedule: string;
+  description: string;
+  /** 定員・申込方法などの補足 */
+  note?: string | null;
+};
+
 export type Spot = {
   id: string;
   name: string;
@@ -33,5 +44,7 @@ export type Spot = {
   instagram_url?: string | null;
   /** 店内・料理の写真（public 配下のパス）。紹介動画から切り出したもの */
   photos?: string[] | null;
+  /** 開催予定のイベント。開催日を過ぎたものは自動で非表示になる */
+  events?: SpotEvent[] | null;
   tags: string[];
 };

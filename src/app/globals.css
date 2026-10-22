@@ -132,6 +132,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tag { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: #f1ece0; color: var(--muted); font-weight: 700; }
 .tag--free { background: #e3f3e9; color: var(--green); }
 
+.events { margin-top: 4px; }
+.event {
+  border: 1.5px solid #f0ddb8; border-radius: 14px; background: #fdf6e7;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.event__title { margin: 0; font-size: 15px; font-weight: 900; }
+.event__schedule { margin: 4px 0 0; font-size: 13.5px; font-weight: 700; }
+.event__desc { margin: 6px 0 0; font-size: 14px; line-height: 1.6; }
+.event__note { margin: 6px 0 0; font-size: 12px; color: var(--muted); line-height: 1.6; }
+
 .gallery { margin-top: 6px; }
 .gallery__strip {
   display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory;

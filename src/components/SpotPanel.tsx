@@ -6,8 +6,18 @@ import { CATEGORIES, type Spot } from "@/lib/types";
 
 type Props = { spot: Spot; onClose: () => void };
 
+/** 今日の日付（端末のローカル時刻基準）を YYYY-MM-DD で返す */
+function todayStr() {
+  const now = new Date();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  return `${now.getFullYear()}-${m}-${d}`;
+}
+
 export default function SpotPanel({ spot, onClose }: Props) {
   const c = CATEGORIES[spot.category];
+  const today = todayStr();
+  const upcomingEvents = (spot.events ?? []).filter((e) => e.date >= today);
 
   return (
     <aside className="panel" aria-label={`${spot.name} の詳細`}>
@@ -25,6 +35,20 @@ export default function SpotPanel({ spot, onClose }: Props) {
         {spot.hours && <p className="panel__hours">🕒 {spot.hours}</p>}
 
         <p className="panel__summary">{spot.summary}</p>
+
+        {upcomingEvents.length > 0 && (
+          <section className="events">
+            <h3 className="panel__h3">開催予定のイベント</h3>
+            {upcomingEvents.map((e) => (
+              <div className="event" key={`${e.date}-${e.title}`}>
+                <p className="event__title">🎉 {e.title}</p>
+                <p className="event__schedule">📅 {e.schedule}</p>
+                <p className="event__desc">{e.description}</p>
+                {e.note && <p className="event__note">{e.note}</p>}
+              </div>
+            ))}
+          </section>
+        )}
 
         <h3 className="panel__h3">子ども向けのサービス</h3>
         <ul className="services">
