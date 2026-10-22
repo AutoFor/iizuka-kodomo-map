@@ -170,6 +170,29 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .insta__embed > a { display: block; padding: 16px; font-size: 13px; color: var(--muted); }
 .insta iframe.instagram-media, .insta iframe.instagram-media-rendered { width: 100% !important; min-width: 0 !important; max-width: 100% !important; margin: 0 0 10px !important; border-radius: 14px; }
 .insta__note { margin: 0 0 10px; font-size: 12px; color: var(--muted); }
+.btn--fullscreen { width: 100%; margin: 0 0 10px; }
+
+/* ---- Instagram 全画面表示 ---- */
+.insta-modal {
+  position: fixed; inset: 0; z-index: 2000; background: rgba(0, 0, 0, .92);
+  height: 100dvh; display: flex; align-items: center; justify-content: center; padding: 12px;
+}
+.insta-modal__close {
+  position: absolute; top: calc(10px + env(safe-area-inset-top)); right: 12px; z-index: 1;
+  width: 38px; height: 38px; border-radius: 50%; border: none;
+  background: rgba(255, 255, 255, .2); color: #fff; font-size: 22px; line-height: 1;
+}
+/* リール（9:16）+ 埋め込みヘッダー分が 100dvh に収まる幅に絞る */
+.insta-modal__body {
+  width: min(100%, calc((100dvh - 150px) * .5625), 420px);
+  max-height: calc(100dvh - 24px); overflow-y: auto; border-radius: 14px;
+}
+.insta-modal__body .insta__embed { margin: 0 !important; min-height: 300px; border: none; }
+.insta-modal__body iframe.instagram-media,
+.insta-modal__body iframe.instagram-media-rendered {
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  margin: 0 !important; border-radius: 14px;
+}
 .insta__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 .panel__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }

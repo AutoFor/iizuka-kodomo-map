@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import InstagramEmbed from "@/components/InstagramEmbed";
 import PhotoGallery from "@/components/PhotoGallery";
 import { CATEGORIES, type Spot } from "@/lib/types";
@@ -18,6 +20,10 @@ export default function SpotPanel({ spot, onClose }: Props) {
   const c = CATEGORIES[spot.category];
   const today = todayStr();
   const upcomingEvents = (spot.events ?? []).filter((e) => e.date >= today);
+  const [instaFull, setInstaFull] = useState(false);
+
+  // 別のスポットに切り替わったら全画面表示を閉じる
+  useEffect(() => setInstaFull(false), [spot.id]);
 
   return (
     <aside className="panel" aria-label={`${spot.name} の詳細`}>
@@ -77,12 +83,30 @@ export default function SpotPanel({ spot, onClose }: Props) {
           <section className="insta">
             <h3 className="panel__h3">紹介動画（Instagram）</h3>
             <InstagramEmbed url={spot.instagram_url} title={spot.name} />
+            <button className="btn btn--fullscreen" onClick={() => setInstaFull(true)}>
+              ⛶ 全画面で再生
+            </button>
             <p className="insta__note">動画が表示されない場合は、下のボタンから Instagram で開いてください。</p>
             <a className="btn btn--insta" href={spot.instagram_url} target="_blank" rel="noopener noreferrer">
               Instagram で見る ↗
             </a>
           </section>
         )}
+
+        {/* パネル（overflow-y: auto）内の fixed は iOS Safari で見切れるため body 直下に出す */}
+        {instaFull &&
+          spot.instagram_url &&
+          createPortal(
+            <div className="insta-modal" role="dialog" aria-label="Instagram 動画の全画面表示" onClick={() => setInstaFull(false)}>
+              <button className="insta-modal__close" onClick={() => setInstaFull(false)} aria-label="全画面表示を閉じる">
+                ×
+              </button>
+              <div className="insta-modal__body" onClick={(e) => e.stopPropagation()}>
+                <InstagramEmbed url={spot.instagram_url} title={spot.name} />
+              </div>
+            </div>,
+            document.body,
+          )}
 
         <div className="panel__actions">
           {spot.url && (
