@@ -39,6 +39,8 @@ export type Spot = {
   summary: string;
   services: string[];
   hours?: string | null;
+  /** 駐車場の情報（「駐車場あり」「目の前に有料駐車場あり」など） */
+  parking?: string | null;
   free: boolean;
   url?: string | null;
   instagram_url?: string | null;

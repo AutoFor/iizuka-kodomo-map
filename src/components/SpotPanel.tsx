@@ -39,6 +39,7 @@ export default function SpotPanel({ spot, onClose }: Props) {
         <h2 className="panel__title">{spot.name}</h2>
         <p className="panel__address">{spot.address}</p>
         {spot.hours && <p className="panel__hours">🕒 {spot.hours}</p>}
+        {spot.parking && <p className="panel__hours">🅿️ {spot.parking}</p>}
 
         <p className="panel__summary">{spot.summary}</p>
 

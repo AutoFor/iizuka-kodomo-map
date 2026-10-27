@@ -66,6 +66,7 @@ scripts/extract-frames.sh honmachi-spice ~/Downloads/honmachi.mp4 6
 | summary | 紹介文 |
 | services | 子ども向けサービス（配列） |
 | hours | 営業・開催時間 |
+| parking | 駐車場の情報（任意） |
 | free | 無料かどうか |
 | url | 公式サイト |
 | instagram_url | Instagram のリール / 投稿 URL（埋め込み表示される） |
