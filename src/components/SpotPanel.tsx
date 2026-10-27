@@ -111,7 +111,7 @@ export default function SpotPanel({ spot, onClose }: Props) {
         <div className="panel__actions">
           {spot.url && (
             <a className="btn btn--primary" href={spot.url} target="_blank" rel="noopener noreferrer">
-              公式サイト ↗
+              {spot.url.includes("instagram.com") ? "お店の Instagram ↗" : "公式サイト ↗"}
             </a>
           )}
           <a

@@ -78,9 +78,9 @@ export const SPOTS: Spot[] = [
     summary:
       "羽釜で炊いたごはんと、地元の食材を使った手作りのおかずが自慢の食堂。未就学児はおにぎりと豚汁が無料。ベビーカーで入れて、子ども椅子もあります。",
     services: ["未就学児 無料（おにぎり・豚汁）", "ベビーカーOK", "子ども椅子あり"],
-    hours: "最新の営業時間・定休日はお店に確認（TEL 080-3957-5899）",
+    hours: "不定休 ※営業日はお店の Instagram のカレンダーで確認",
     free: false,
-    url: "https://www.hotpepper.jp/strJ004421637/",
+    url: "https://www.instagram.com/daisy20110203haku/",
     instagram_url: "https://www.instagram.com/reel/DUSWkJoEwV6/",
     photos: [],
     tags: ["乳幼児", "保護者"],
