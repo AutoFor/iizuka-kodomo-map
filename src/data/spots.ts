@@ -67,4 +67,22 @@ export const SPOTS: Spot[] = [
     ],
     tags: ["乳幼児", "小学生", "保護者"],
   },
+  {
+    id: "meshiya-haku",
+    name: "めし屋 柏（HAKU）",
+    category: "kids_ok",
+    // 位置は潤野地区の概算。?edit で調整すること
+    lat: 33.6335,
+    lng: 130.7135,
+    address: "飯塚市潤野996",
+    summary:
+      "羽釜で炊いたごはんと、地元の食材を使った手作りのおかずが自慢の食堂。未就学児はおにぎりと豚汁が無料。ベビーカーで入れて、子ども椅子もあります。",
+    services: ["未就学児 無料（おにぎり・豚汁）", "ベビーカーOK", "子ども椅子あり"],
+    hours: "最新の営業時間・定休日はお店に確認（TEL 080-3957-5899）",
+    free: false,
+    url: "https://www.hotpepper.jp/strJ004421637/",
+    instagram_url: "https://www.instagram.com/reel/DUSWkJoEwV6/",
+    photos: [],
+    tags: ["乳幼児", "保護者"],
+  },
 ];
