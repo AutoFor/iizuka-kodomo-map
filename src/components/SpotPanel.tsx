@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import InstagramEmbed from "@/components/InstagramEmbed";
 import PhotoGallery from "@/components/PhotoGallery";
@@ -20,10 +20,9 @@ export default function SpotPanel({ spot, onClose }: Props) {
   const c = CATEGORIES[spot.category];
   const today = todayStr();
   const upcomingEvents = (spot.events ?? []).filter((e) => e.date >= today);
+  // 全画面表示はスポット切り替えで閉じる前提。App 側で key={spot.id} を
+  // 付けてスポットごとにコンポーネントを作り直すことで state をリセットする
   const [instaFull, setInstaFull] = useState(false);
-
-  // 別のスポットに切り替わったら全画面表示を閉じる
-  useEffect(() => setInstaFull(false), [spot.id]);
 
   return (
     <aside className="panel" aria-label={`${spot.name} の詳細`}>

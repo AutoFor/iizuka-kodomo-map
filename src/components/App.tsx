@@ -120,7 +120,8 @@ export default function App({ spots }: Props) {
           </ul>
         )}
 
-        {selected && !editMode && <SpotPanel spot={selected} onClose={() => setSelectedId(null)} />}
+        {/* key でスポットごとに作り直し、パネル内の state（全画面表示など）をリセットする */}
+        {selected && !editMode && <SpotPanel key={selected.id} spot={selected} onClose={() => setSelectedId(null)} />}
         {editMode && <EditBar spots={spots} moved={moved} />}
       </main>
 
